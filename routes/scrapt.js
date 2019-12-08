@@ -1,37 +1,29 @@
 var express = require('express');
 var router = express.Router();
-var scrapt = require('../lib/scrap_web')
-var db = require("../lib/database")
-var escapeHtml = require("htmlspecialchars")
+var gen = require("../lib/generate")
+var scrap = require('../lib/scrap_web')
 
-router.get("/generate", function (req, res, next) {
-    var beritaSaved = 0
-    scrapt.getLinkDetik("https://inet.detik.com/games", async function (result) {
-        await result.forEach(data => {
-            if ((data.link != '') && (data.judul != '')) {
-                db.check_berita(data.link, function (isExist) {
-                    if (!isExist) {
-                        scrapt.getIsiDetik(data.link, function (content) {
-                            data.isi = escapeHtml(content)
-                            data.source = "detik"
-                            db.save_berita(data, function (resul) {
-                                if (resul == true) {
-                                    console.dir("Simpan Berhasil")
-                                    beritaSaved += 1;
-                                    console.log(beritaSaved)
-                                } else console.dir("simpan gagal")
-                            })
-                        });
-                    } else {
-                        console.dir("berita sudah ada")
-                    }
-                })
-            }
-        });
+
+router.get("/generate", async function (req, res, next) {
+    gen.generateDetik(function (jml) {
         res.send({
             status: true,
-            beritaSaved: beritaSaved
+            beritaSaved: jml
         }).status(200)
+    })
+})
+
+
+router.get("/youtube", async function (req, res, next) {
+    scrap.getLinkYoutube("https://www.youtube.com/feed/trending", function (result) {
+        res.send(result).status(200);
+    })
+})
+
+
+router.get("/ytdetail", async function (req, res, next) {
+    scrap.getDetailYoutube("https://www.youtube.com/watch?v=AibPkYw30Nc", function (result) {
+        res.send(result).status(200);
     })
 })
 

@@ -1,5 +1,17 @@
-extends layout
+extends layout_home
+
+block title
+  title #{title}
 
 block content
-  h1= title
-  p Welcome to #{title}
+  each item in data
+    .col-lg-3.col-sm-6.videoitem
+      .b-video
+        .v-img
+          a(href=item.url)
+            img(src=item.image, alt='')
+          .time #{item.durasi}
+        .v-desc
+          a(href=item.url) #{item.shortname}
+        .v-views
+          | #{item.detailView[1]}. 

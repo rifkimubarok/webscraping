@@ -1,0 +1,45 @@
+extends layout_detail
+
+block title
+    title #{title}
+
+block content
+    - var item = data
+    .col-lg-10.col-xs-12.col-sm-12.col-lg-offset-1
+        .sv-video
+            .video-responsive
+                iframe(width='560', height='300', src='https://www.youtube.com/embed/#{video}?&autoplay=1', frameborder='0', allowfullscreen='')
+        h1
+            a(href='#') #{item.judul}
+        .acide-panel.acide-panel-top
+            a(href='#')
+                i.cv.cvicon-cv-watch-later(data-toggle='tooltip', data-placement='top', title='Watch Later')
+            a(href='#')
+                i.cv.cvicon-cv-liked(data-toggle='tooltip', data-placement='top', title='Liked')
+            a(href='#')
+                i.cv.cvicon-cv-flag(data-toggle='tooltip', data-placement='top', title='Flag')
+        .author
+            .author-head
+                a(href='#')
+                    img.sv-avatar(src=item.uploader_image, alt='')
+                .sv-name
+                    div
+                        a(href='#') #{item.uploader}
+                    .c-sub.hidden-xs
+                        .c-f Subscribe
+                        .c-s #{item.subscriber}
+                        .clearfix
+                a.author-btn-add(href='#')
+                    i.cv.cvicon-cv-plus
+            .author-border
+            .sv-views
+                .sv-views-count #{item.view_count} x ditonton
+            .clearfix
+        .info
+            .info-content
+        .content-block.head-div.head-arrow.visible-xs
+            .head-arrow-icon
+                i.cv.cvicon-cv-next
+            .adblock2.adblock2-v2
+                .img
+                    span Google AdSense 300 x 250

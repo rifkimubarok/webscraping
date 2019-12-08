@@ -1,0 +1,262 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		// The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
+		meta(name='description', content='')
+		meta(name='author', content='')
+		link(rel='icon', href='favicon.png')
+		block title
+		// Bootstrap core CSS
+		link(href='/stylesheets/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+		// player
+		link(rel='stylesheet', href='js/vendor/player/johndyer-mediaelement-89793bc/build/mediaelementplayer.min.css')
+		// Theme CSS
+		link(href='/stylesheets/css/style.css', rel='stylesheet')
+		link(href='/stylesheets/css/font-awesome.min.css', rel='stylesheet')
+		link(href='/stylesheets/css/font-circle-video.css', rel='stylesheet')
+		// font-family: 'Hind', sans-serif;
+		link(href='/stylesheets/fonts.googleapis.com/cssb44b.css?family=Hind:400,300,500,600,700|Hind+Guntur:300,400,500,700', rel='stylesheet', type='text/css')
+	body.single-video.light
+		// logo, menu, search, avatar
+		.container-fluid
+			.row
+				.btn-color-toggle
+					img(src='/images/icon_bulb_light.png', alt='')
+				.navbar-container
+					.container
+						.row
+							.col-xs-3.visible-xs
+								a.btn-menu-toggle(href='#')
+									i.cv.cvicon-cv-menu
+							.col-lg-1.col-sm-2.col-xs-6
+								a.navbar-brand(href='index.html')
+									img.logo(src='images/logo.svg', alt='Project name')
+									span Circle
+							.col-lg-9.col-sm-12.col-xs-3
+								form(action='/search', method='get')
+									.topsearch
+										i.cv.cvicon-cv-cancel.topsearch-close
+										.input-group
+											span#sizing-addon2.input-group-addon
+												i.fa.fa-search
+											input.form-control(type='text', placeholder='Search', name="keyword", aria-describedby='sizing-addon2')
+											.input-group-btn
+												button.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+													i.cv.cvicon-cv-video-file
+													span.caret
+												| /
+												ul.dropdown-menu
+													li
+														a(href='#')
+															i.cv.cvicon-cv-relevant
+															|  Relevant
+													li
+														a(href='#')
+															i.cv.cvicon-cv-calender
+															|  Recent
+													li
+														a(href='#')
+															i.cv.cvicon-cv-view-stats
+															|  Viewed
+													li
+														a(href='#')
+															i.cv.cvicon-cv-star
+															|  Top Rated
+													li
+														a(href='#')
+															i.cv.cvicon-cv-watch-later
+															|  Longest
+											// /btn-group
+							.col-lg-2.col-sm-4.hidden-xs
+								.avatar.pull-left
+									img(src='/images/avatar.png', alt='avatar')
+									span.status
+								.selectuser.pull-left
+									.btn-group.pull-right.dropdown
+										button#dropdownMenu1.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true')
+											| Bailey
+											span.caret
+										ul.dropdown-menu
+											li
+												a(href='login.html') Login
+											li
+												a(href='signup.html') Sign up
+								.clearfix
+						.hidden-xs
+							a(href='upload.html')
+								.upload-button
+									i.cv.cvicon-cv-upload-video
+		// /logo
+		.mobile-menu
+			.mobile-menu-head
+				a.mobile-menu-close(href='#')
+				a.navbar-brand(href='index.html')
+					img.logo(src='images/logo.svg', alt='Project name')
+					span Circle
+				.mobile-menu-btn-color
+					img(src='/images/icon_bulb_light.png', alt='')
+			.mobile-menu-content
+				.mobile-menu-user
+					.mobile-menu-user-img
+						img(src='/images/ava11.png', alt='')
+					p Bailey Fry 
+					span.caret
+				a.btn.mobile-menu-upload(href='#')
+					i.cv.cvicon-cv-upload-video
+					span Upload Video
+				.mobile-menu-list
+					ul
+						li
+							a(href='#')
+								i.cv.cvicon-cv-play-circle
+								p Popular Videos
+						li
+							a(href='#')
+								i.cv.cvicon-cv-playlist
+								p Browse Categories
+								span.caret
+							ul.mobile-menu-categories
+								li.color-active
+									a(href='#')
+										| Pages 
+										span.caret
+									ul
+										li
+											a(href='index.html') Home Page
+										li
+											a(href='single-video.html') Single Video Page
+										li
+											a(href='single-video-youtube.html') Single Video Youtube Embedded Page
+										li
+											a(href='single-video-vimeo.html') Single Video Vimeo Embedded Page
+										li
+											a(href='upload.html') Upload Video Page
+										li
+											a(href='upload-edit.html') Upload Video Edit Page
+										li
+											a(href='search.html') Searched Videos Page
+										li
+											a(href='channel.html') Single Channel Page
+										li
+											a(href='channels.html') Channels Page
+										li
+											a(href='single-video-tabs.html') Single Videos Page With Tabs
+										li
+											a(href='single-video-playlist.html') Single Videos Page With Playlist
+										li
+											a(href='history.html') History Page
+										li
+											a(href='categories.html') Browse Categories Page
+										li
+											a(href='categories_side_menu.html') Browse Categories Side Menu Page
+										li
+											a(href='subscription.html') Subscription Page
+										li
+											a(href='login.html') Login Page
+										li
+											a(href='signup.html') Signup Page
+								li
+									a(href='categories.html') Categories
+								li
+									a(href='channel.html') Channels
+						li
+							a(href='#')
+								i.cv.cvicon-cv-liked
+								p Liked Videos
+						li
+							a(href='#')
+								i.cv.cvicon-cv-history
+								p History
+						li
+							a(href='#')
+								i.cv.cvicon-cv-purchased
+								p Purchased Videos
+				a.btn.mobile-menu-logout(href='#') Log out
+		.content-wrapper
+			.container
+				.row
+					block content
+		// footer
+		footer
+			.container-fluid
+				.row
+					.container.padding-def
+						.col-lg-1.col-sm-2.col-xs-12.footer-logo
+							// <a class="navbar-brand" href="index.html"><img src="images/logo.svg" alt="Project name" class="logo" /></a>
+							a.navbar-brand(href='index.html')
+								img.logo(src='images/logo.svg', alt='Project name')
+								span Circle
+						.col-lg-7.col-sm-6.col-xs-12
+							.f-links
+								ul.list-inline
+									li
+										a(href='#') About
+									li
+										a(href='#') Press
+									li
+										a(href='#') Copyright
+									li
+										a(href='#') Advertise
+									li.hidden-xs
+										a(href='#') Help
+							.delimiter
+						.col-lg-7.col-sm-6.col-xs-12
+							.f-copy
+								ul.list-inline
+									li
+										a(href='#') Terms
+									li
+										a(href='#') Privacy
+									li
+										| Copyrights 2016 
+										a.hidden-xs(href='azyrusthemes.html') azyrusthemes.com
+						.col-lg-offset-1.col-lg-3.col-sm-4.col-xs-12
+							.f-last-line
+								.f-icon.pull-left
+									a(href='#')
+										i.fa.fa-facebook-square
+									a(href='#')
+										i.fa.fa-twitter
+									a(href='#')
+										i.fa.fa-google-plus
+								.f-lang.pull-right
+									// Small button group
+									.btn-group.dropup.pull-right
+										button.btn.btn-default.btn-sm.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+											| Language 
+											span.caret
+										ul.dropdown-menu
+											li
+												a(href='#')
+													i.cv.cvicon-cv-relevant
+													|  Relevant
+											li
+												a(href='#')
+													i.cv.cvicon-cv-calender
+													|  Recent
+											li
+												a(href='#')
+													i.cv.cvicon-cv-view-stats
+													|  Viewed
+											li
+												a(href='#')
+													i.cv.cvicon-cv-star
+													|  Top Rated
+											li
+												a(href='#')
+													i.cv.cvicon-cv-watch-later
+													|  Longest
+								.clearfix
+							.delimiter.visible-xs
+		// /footer
+		//
+			Bootstrap core JavaScript
+			==================================================
+		// Placed at the end of the document so the pages load faster
+		script(src='/javascripts/js/jquery.min.js')
+		script(src='/stylesheets/bootstrap/js/bootstrap.min.js')
+		script(src='/javascripts/js/vendor/player/johndyer-mediaelement-89793bc/build/mediaelement-and-player.min.js')
+		script(src='/javascripts/js/custom.js')
